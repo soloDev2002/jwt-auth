@@ -1,0 +1,138 @@
+.tab2__container {
+  flex-direction: column;
+  padding: 20px;
+}
+.tab2__header {
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-decoration: underline;
+}
+.dashboard__container {
+  position: relative;
+  max-height: 48vh;
+  overflow-y: auto;
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+}
+thead {
+  background-color: #c7c7c7;
+}
+thead > tr {
+  border-top: 0;
+}
+tr {
+  border-top: 1px solid rgb(0, 0, 0);
+}
+tr:nth-child(even) {
+  background-color: #f1f0f0;
+  margin-bottom: 0;
+}
+td,
+th {
+  white-space: nowrap;
+  font-size: 1.8vw;
+  min-width: 100px;
+  width: 180px;
+  text-align: center;
+  height: 20px;
+  padding: 5px 15px;
+  border-right: 1px solid black;
+}
+button {
+  height: 100%;
+  padding: 5px 25px;
+  font-size: 1.5vw;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.delete__button__td {
+  cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+  .tab2__header {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .dashboard__container {
+    padding: 20px;
+    padding-bottom: 0;
+    max-height: 50vh;
+    width: 100%;
+    overflow-y: auto;
+  }
+  thead {
+    display: none;
+  }
+  .tab2__table {
+    width: 100%;
+    border: 0;
+  }
+  tbody,
+  tr,
+  td {
+    width: 100%;
+    display: block;
+  }
+  tr {
+    border: 1px solid black;
+    margin-bottom: 25px;
+  }
+  td {
+    position: relative;
+    min-width: 100%;
+    border: 0;
+    font-size: 1rem;
+    overflow: hidden;
+    height: 30px;
+    text-align: left;
+    padding-left: 50%;
+    border-bottom: 1px solid black;
+  }
+  td::before {
+    position: absolute;
+    content: attr(data-label);
+    width: 50%;
+    left: 0;
+    padding-left: 20px;
+    text-align: left;
+  }
+  td:last-child {
+    height: 40px;
+    right: 0;
+    border: 0;
+  }
+  button {
+    font-size: 1rem;
+  }
+  .dashboard__container {
+    padding: 20px 2%;
+    position: relative;
+    height: 50vh;
+  }
+  .dashboard__child {
+    position: absolute;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    width: 96%;
+  }
+}

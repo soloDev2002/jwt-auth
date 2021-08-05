@@ -1,0 +1,94 @@
+.homepage__container {
+  padding: 20px 0;
+  height: 100vh;
+  background: #8e9eab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eef2f3,
+    #8e9eab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eef2f3,
+    #8e9eab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.homepage__header {
+  justify-content: space-between !important;
+  margin-bottom: 60px;
+  padding: 0 30px;
+  font-size: 50px;
+  font-weight: 700;
+}
+.logout__button {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 20px;
+  background-color: rgb(247, 27, 27);
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.link__container {
+  padding: 0 30px;
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+.tab {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 25px;
+  border-radius: 8px;
+  margin-right: 20px;
+  padding: 5px 60px;
+  margin-bottom: 5px;
+  background-color: aquamarine;
+}
+.selected__link {
+  background-color: rgb(216, 240, 232);
+}
+a:-webkit-any-link {
+  text-decoration: none;
+  color: black;
+}
+.loader {
+  height: 50vh;
+  margin-top: -40px;
+}
+.MuiCircularProgress-root {
+  height: 80px !important;
+  width: 80px !important;
+  color: #7fffd4 !important;
+}
+.tab:hover {
+  background-color: rgb(175, 241, 219);
+}
+
+@media screen and (max-width: 700px) {
+  .logout__button {
+    height: 30px;
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+  .homepage__header {
+    padding: 0 15px;
+    margin-bottom: 50px;
+    font-size: 35px;
+  }
+  .link__container {
+    padding: 5px 10px;
+  }
+  .MuiCircularProgress-root {
+    height: 50px !important;
+    width: 50px !important;
+  }
+  .tab {
+    padding: 5px 40px;
+    font-size: 18px;
+  }
+  .loader {
+    margin-top: -0px;
+  }
+}
