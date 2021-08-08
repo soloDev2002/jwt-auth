@@ -1,6 +1,5 @@
 .homepage__container {
-  padding: 20px 0;
-  height: 100vh;
+  padding: 20px 0 0;
   background: #8e9eab; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,

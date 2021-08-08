@@ -4,6 +4,7 @@ import axios from "../axios";
 import failedImg from "../pages/css/images/Component 2.svg";
 import successImg from "../pages/css/images/Component 1.svg";
 import { CircularProgress } from "@material-ui/core";
+import Homepage from "../pages/Homepage";
 
 function Tab2() {
   const [data, setData] = useState();
@@ -86,90 +87,93 @@ function Tab2() {
   }, [success, timer]);
 
   return (
-    <div className="tab2__container flex__container">
-      <div className="tab2__header">Dashboard</div>
-      {loading ? (
-        <div className="loader flex__container">
-          <CircularProgress />
-        </div>
-      ) : data?.length > 0 ? (
-        <div className="dashboard__container">
-          <div className="dashboard__child">
-            <table className="tab2__table">
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Mobile No.</th>
-                  <th>Address</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.map((user, index) => (
-                  <tr key={user.email}>
-                    <td data-label="No.">{index + 1}</td>
-                    <td data-label="Name">{user.name}</td>
-                    <td data-label="Email">{user.email}</td>
-                    <td data-label="Mobile No.">{user.mobile_no}</td>
-                    <td data-label="Address">{user.address}</td>
-                    <td>
-                      <button
-                        className="delete__button__td"
-                        onClick={() => {
-                          handleUserDelete(user._id);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </td>
+    <>
+      <Homepage />
+      <div className="tab2__container flex__container">
+        <div className="tab2__header">Dashboard</div>
+        {loading ? (
+          <div className="loader flex__container">
+            <CircularProgress />
+          </div>
+        ) : data?.length > 0 ? (
+          <div className="dashboard__container">
+            <div className="dashboard__child">
+              <table className="tab2__table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile No.</th>
+                    <th>Address</th>
+                    <th></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data?.map((user, index) => (
+                    <tr key={user.email}>
+                      <td data-label="No.">{index + 1}</td>
+                      <td data-label="Name">{user.name}</td>
+                      <td data-label="Email">{user.email}</td>
+                      <td data-label="Mobile No.">{user.mobile_no}</td>
+                      <td data-label="Address">{user.address}</td>
+                      <td>
+                        <button
+                          className="delete__button__td"
+                          onClick={() => {
+                            handleUserDelete(user._id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="no__user__found">NO USER FOUND !</div>
-      )}
-      {success === "true" ? (
-        <>
-          <div className="success__background" />
-          <div
-            className={`success__displayer flex__container ${
-              success === "true" && "show__success__displayer"
-            }`}
-            style={{ animation: `${success ? "fadeIn" : "fadeOut"} 1s` }}
-          >
-            <img src={successImg} alt="Success" />
-            <div className="success__msg">USER DELETED SUCCESSFULLY.</div>
-          </div>
-        </>
-      ) : (
-        success === "false" && (
+        ) : (
+          <div className="no__user__found">NO USER FOUND !</div>
+        )}
+        {success === "true" ? (
           <>
             <div className="success__background" />
             <div
               className={`success__displayer flex__container ${
-                success === "false" && "show__success__displayer"
+                success === "true" && "show__success__displayer"
               }`}
               style={{ animation: `${success ? "fadeIn" : "fadeOut"} 1s` }}
             >
-              <img
-                src={failedImg}
-                alt="failed"
-                style={{ height: "135px", width: "135px" }}
-              />
-              <div className="success__msg">SESSION TIMED OUT !</div>
-              <div className="redirecting">
-                Redirecting to login page in {timer}
-              </div>
+              <img src={successImg} alt="Success" />
+              <div className="success__msg">USER DELETED SUCCESSFULLY.</div>
             </div>
           </>
-        )
-      )}
-    </div>
+        ) : (
+          success === "false" && (
+            <>
+              <div className="success__background" />
+              <div
+                className={`success__displayer flex__container ${
+                  success === "false" && "show__success__displayer"
+                }`}
+                style={{ animation: `${success ? "fadeIn" : "fadeOut"} 1s` }}
+              >
+                <img
+                  src={failedImg}
+                  alt="failed"
+                  style={{ height: "135px", width: "135px" }}
+                />
+                <div className="success__msg">SESSION TIMED OUT !</div>
+                <div className="redirecting">
+                  Redirecting to login page in {timer}
+                </div>
+              </div>
+            </>
+          )
+        )}
+      </div>
+    </>
   );
 }
 

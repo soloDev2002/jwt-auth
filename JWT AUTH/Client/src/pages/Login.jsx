@@ -15,6 +15,7 @@ function Login() {
   const [err, setErr] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
+
   //handling login
   const handleUserLogin = async () => {
     setShowLoading(true);
@@ -29,6 +30,7 @@ function Login() {
           setShowSuccess(true);
           setTimeout(() => {
             sessionStorage.setItem("token", res.data);
+            setShowSuccess(false);
             window.location.reload();
           }, 3000);
         }

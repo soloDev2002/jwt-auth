@@ -1,5 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
-import Homepage from "./pages/Homepage";
+import React, { createContext, useState } from "react";
 import Login from "./pages/Login";
 import {
   BrowserRouter as Router,
@@ -7,27 +6,31 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Tab1 from "./components/Tab1";
+import Tab2 from "./components/Tab2";
 
 export const token_context = createContext();
 
 function App() {
-  const [Token, setToken] = useState();
-
-  useEffect(() => {
-    setToken(sessionStorage.getItem("token"));
-  }, []);
+  const Token = sessionStorage.getItem("token");
 
   return (
     <div className="App">
-      <Router>
-        {Token ? <Redirect to="/home" /> : <Redirect to="/login" />}
-        <Switch>
-          <token_context.Provider value={{ token: Token }}>
-            <Route path="/home" exact component={Homepage} />
-            <Route path="/login" exact render={() => <Login />} />
-          </token_context.Provider>
-        </Switch>
-      </Router>
+      <token_context.Provider value={{ token: Token }}>
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              {Token ? <Tab1 /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/tab2" exact>
+              {Token ? <Tab2 /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/login" exact>
+              {!Token ? <Login /> : <Redirect to="/" />}
+            </Route>
+          </Switch>
+        </Router>
+      </token_context.Provider>
     </div>
   );
 }
